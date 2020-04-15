@@ -1,0 +1,23 @@
+<h1>Невс</h1>
+
+{% for news in news %}
+
+    <p>{{ news.pk }} {{ news.title}}</p>
+
+{% endfor %}
+
+{% if news.paginator.num_pages > 1 %}
+
+    <div class="pagination">
+        {% if items.has_previous %}
+            <a href="?page=1">First</a>
+            <a href="?page={{ news.previous_page_number }}">Previous</a>
+        {% endif %}
+        <span>{{ news.number }}</span><span>of</span> <span>{{ news.paginator.num_pages }}</span>
+        {% if news.has_next %}
+            <a href="?page={{ news.next_page_number }}">Впурйод</a>
+            <a href="?page={{ news.paginator.num_pages }}">В конэц</a>
+        {% endif %}
+    </div>
+
+{% endif %}
