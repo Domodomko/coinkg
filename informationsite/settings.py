@@ -3,32 +3,26 @@ import datetime
 from django.conf import global_settings
 import django.conf.locale
 
-from decouple import config, UndefinedValueError
 import dj_database_url
 import django_heroku
 
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
+from decouple import config, UndefinedValueError
 
-# SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = config('SECRET_KEY')
+
 DEBUG = config('DEBUG', default=True, cast=bool)
 # SECURITY WARNING: don't run with debug turned on in production!
 
 ALLOWED_HOSTS = ['*']
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-# STATIC_URL = '/static/'
-# STATICFILES_DIRS = (
-#     os.path.join(BASE_DIR, 'static'),
-# )
 
 # Application definition
 
 INSTALLED_APPS = [
     'modeltranslation',
+    'jet.dashboard',
+    'jet',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -36,13 +30,14 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'main',
-    'authentication',
+    'main.apps.CreditsConfig',
+    'authentication.apps.AuthenticationConfig',
     'ckeditor',
     'rest_framework.authtoken',
     'djoser',
     'whitenoise.runserver_nostatic',
     'drf_yasg',
+
 ]
 
 MIDDLEWARE = [
@@ -70,6 +65,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.request',
+
             ],
         },
     },

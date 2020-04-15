@@ -1,7 +1,9 @@
 from django.contrib import admin
-from main.models import *
-from modeltranslation.admin import TranslationAdmin
 from django.contrib.admin import ModelAdmin
+
+from modeltranslation.admin import TranslationAdmin
+
+from main.models import *
 
 
 class NewsAdmin(TranslationAdmin, ModelAdmin):

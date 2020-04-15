@@ -1,7 +1,10 @@
 from django.db import models
-from ckeditor.fields import RichTextField
-from authentication.models import User
+
 from phonenumber_field.modelfields import PhoneNumberField
+from ckeditor.fields import RichTextField
+
+from authentication.models import User
+
 
 CONTACT_TYPES = (
     ('PHONE', 'Телефон'),

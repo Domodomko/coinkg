@@ -1,11 +1,13 @@
 from django.http import Http404
 from django.utils import timezone
-from rest_framework import generics, status
-from main.serializers import *
-from rest_framework.response import Response
 from django.core.mail import send_mail
+
+from rest_framework import generics, status
+from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.permissions import AllowAny, IsAuthenticated
+
+from .serializers import *
 
 
 class NewsListView(generics.ListAPIView):
@@ -45,8 +47,7 @@ class ContactListView(generics.ListAPIView):
 
 
 class FeedBackCreateView(APIView):
-    # permission_classes = (AllowAny,)
-    # permission_classes = (IsAuthenticated, )
+    permission_classes = (AllowAny,)
     serializer_class = FeedbackSerializer
 
     def post(self, request):
