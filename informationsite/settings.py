@@ -36,8 +36,6 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'djoser',
     'whitenoise.runserver_nostatic',
-    'drf_yasg',
-
 ]
 
 MIDDLEWARE = [
