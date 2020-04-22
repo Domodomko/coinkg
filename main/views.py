@@ -15,7 +15,7 @@ from rest_framework_json_api.pagination import JsonApiPageNumberPagination, Json
 class MyLimitPagination(JsonApiLimitOffsetPagination):
     offset_query_param = 'offset'
     limit_query_param = 'limit'
-    default_limit = 3
+    default_limit = 7
     max_limit = None
 
 
