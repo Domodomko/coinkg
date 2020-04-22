@@ -7,7 +7,7 @@ from .serializers import *
 def newslistpage(request):
     posts = News.objects.all()
 
-    paginator = Paginator(posts, 3)
+    paginator = Paginator(posts, 7)
     page = request.GET.get('page')
     posts = paginator.get_page(page)
 
