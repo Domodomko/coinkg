@@ -9,10 +9,20 @@ from rest_framework.permissions import AllowAny, IsAuthenticated
 
 from .serializers import *
 
+from rest_framework_json_api.pagination import JsonApiPageNumberPagination, JsonApiLimitOffsetPagination
+
+
+class MyLimitPagination(JsonApiLimitOffsetPagination):
+    offset_query_param = 'offset'
+    limit_query_param = 'limit'
+    default_limit = 3
+    max_limit = None
+
 
 class NewsListView(generics.ListAPIView):
     queryset = News.objects.all()
     serializer_class = NewsSerializer
+    pagination_class = MyLimitPagination
 
 
 class NewsDetailView(APIView):
