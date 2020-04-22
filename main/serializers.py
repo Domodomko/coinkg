@@ -38,7 +38,7 @@ class CreditSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Credit
-        fields = ('id', 'product', 'sum', 'time', 'passport')
+        fields = ('id', 'product', 'sum', 'time', 'passport', 'publish', 'currency', 'other_credits', 'user')
 
 
 class CreditsInfoSerializer (serializers.ModelSerializer):
