@@ -16,6 +16,7 @@ django-modeltranslation==0.14.4
 django-phonenumber-field==4.0.0
 django-templated-mail==1.1.1
 djangorestframework==3.11.0
+djangorestframework-jsonapi==3.1.0
 djangorestframework-jwt==1.11.0
 djangorestframework-simplejwt==4.4.0
 djoser==2.0.3
