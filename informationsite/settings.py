@@ -154,8 +154,16 @@ TIME_FORMAT = 'H:i'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
-
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_TMP = os.path.join(BASE_DIR, 'static')
+STATIC_URL = '/static/'
+os.makedirs(STATIC_TMP, exist_ok=True)
+os.makedirs(STATIC_ROOT, exist_ok=True)
+STATICFILES_DIRS = (
+os.path.join(BASE_DIR, 'static'),
+)
+
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'main/media')
 
@@ -197,7 +205,6 @@ CKEDITOR_UPLOAD_PATH = "media/"
 
 PHONENUMBER_DEFAULT_REGION = "KG"
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # This should already be in your settings.py
 django_heroku.settings(locals())
