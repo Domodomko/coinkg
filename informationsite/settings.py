@@ -181,11 +181,14 @@ REST_FRAMEWORK = {
 }
 
 SIMPLE_JWT = {
-   'AUTH_HEADER_TYPES': ('JWT',),
+    'AUTH_HEADER_TYPES': ('JWT',),
+    'ACCESS_TOKEN_LIFETIME': datetime.timedelta(days=3),
+    'REFRESH_TOKEN_LIFETIME': datetime.timedelta(days=7),
+
 }
 
 PROTOCOL = "https"
-DOMAIN = "coinkg.herokuapp.com"
+DOMAIN = "coinkgtest.herokuapp.com"
 DJOSER = {
     'PASSWORD_RESET_CONFIRM_URL': '#/password/reset/confirm/{uid}/{token}',
     'ACTIVATION_URL': 'api/auth/users/activate/{uid}/{token}',
