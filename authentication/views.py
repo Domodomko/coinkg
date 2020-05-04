@@ -1,10 +1,11 @@
 from django.http import HttpResponse
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.utils.encoding import force_bytes, force_text
-
+from rest_framework import generics
 from rest_framework.views import APIView
 
 from .models import User
+from .serializers import AccountSerializer
 
 
 class UserActivationView(APIView):
@@ -19,3 +20,9 @@ class UserActivationView(APIView):
         except(TypeError, ValueError, OverflowError, User.DoesNotExist):
             key_error = "invalid_uid"
             raise key_error
+
+
+class AccountView(generics.ListAPIView):
+    queryset = User.objects.all()
+    serializer_class = AccountSerializer
+

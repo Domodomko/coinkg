@@ -6,7 +6,7 @@ from .models import *
 class NewsSerializer(serializers.ModelSerializer):
     class Meta:
         model = News
-        fields = ('id', 'title', 'content', 'image', 'publish', 'views')
+        fields = ('id', 'title', 'content', 'publish', 'views', 'image')
 
 
 class SuccessStorySerializer(serializers.ModelSerializer):
@@ -34,14 +34,14 @@ class FeedbackSerializer(serializers.ModelSerializer):
 
 
 class CreditSerializer(serializers.ModelSerializer):
-    # user = ProfileSerializer(many=True)
+    user = serializers.ReadOnlyField(source='user.email')
 
     class Meta:
         model = Credit
         fields = ('id', 'product', 'sum', 'time', 'passport', 'publish', 'currency', 'other_credits', 'user')
 
 
-class CreditsInfoSerializer(serializers.ModelSerializer):
+class CreditsInfoSerializer (serializers.ModelSerializer):
     class Meta:
         model = CreditsInfo
         fields = ('id', 'title', 'content', 'image')

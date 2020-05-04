@@ -6,13 +6,12 @@ from rest_framework import generics, status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.permissions import AllowAny, IsAuthenticated
+from rest_framework_json_api.pagination import JsonApiLimitOffsetPagination
 
 from .serializers import *
 
-from rest_framework_json_api.pagination import JsonApiPageNumberPagination, JsonApiLimitOffsetPagination
 
-
-class MyLimitPagination(JsonApiLimitOffsetPagination):
+class LimitPagination(JsonApiLimitOffsetPagination):
     offset_query_param = 'offset'
     limit_query_param = 'limit'
     default_limit = 7
@@ -22,7 +21,7 @@ class MyLimitPagination(JsonApiLimitOffsetPagination):
 class NewsListView(generics.ListAPIView):
     queryset = News.objects.all()
     serializer_class = NewsSerializer
-    pagination_class = MyLimitPagination
+    pagination_class = LimitPagination
 
 
 class NewsDetailView(APIView):
@@ -80,10 +79,20 @@ class FeedBackCreateView(APIView):
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
 
-class CreditListCreateView(generics.ListCreateAPIView):
-    permission_classes = (IsAuthenticated, )
+# class CreditListCreateView(APIView):
+#     permission_classes = (IsAuthenticated,)
+#     def get(self, request):
+#         data = request.user
+#         return Response(data)
+
+
+class CreditListCreateView(generics.CreateAPIView):
+    permission_classes = (IsAuthenticated,)
     queryset = Credit.objects.all()
     serializer_class = CreditSerializer
+
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
 
 
 class CreditsInfoListView(generics.ListAPIView):

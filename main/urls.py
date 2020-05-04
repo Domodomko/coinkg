@@ -8,7 +8,6 @@ app_name = 'main'
 
 urlpatterns = [
     path('news/', NewsListView.as_view(), name='news'),
-    path('newspages/', newslistpage, name='news'),
     path('news/<int:pk>', NewsDetailView.as_view(), name='news_detail'),
     path('successtory/', SuccessStoryListView.as_view(), name='success_story'),
     path('aboutus/', AboutUsListView.as_view(), name='about_us'),

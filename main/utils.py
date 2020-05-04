@@ -10,6 +10,6 @@ def newslistpage(request):
     page = request.GET.get('page')
     posts = paginator.get_page(page)
 
-    # return render(request,
-    #               'main/news_list.html',
-    #               {'news': posts})
+    return render(request,
+                  'main/news_list.html',
+                  {'news': posts})

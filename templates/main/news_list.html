@@ -1,8 +1,18 @@
 <h1>Невс</h1>
 
+  <style>
+   p.clip {
+    white-space: nowrap; /* Запрещаем перенос строк */
+    overflow: hidden; /* Обрезаем все, что не помещается в область */
+    background: #fc0; /* Цвет фона */
+    padding: 5px; /* Поля вокруг текста */
+    text-overflow: ellipsis; /* Добавляем многоточие */
+   }
+  </style>
+
 {% for news in news %}
 
-    <p>{{ news.pk }} {{ news.title}}</p>
+    <p>{{ news.title}} <p><img src="{{ news.image}}" alt=""></p></p>
 
 {% endfor %}
 

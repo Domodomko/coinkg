@@ -96,7 +96,7 @@ class Feedback(models.Model):
 
 
 class Credit(models.Model):
-    user = models.ForeignKey(User, on_delete=models.PROTECT)
+    user = models.ForeignKey('authentication.User', related_name='credits', on_delete=models.PROTECT)
     sum = models.DecimalField(max_digits=8, decimal_places=2, verbose_name='Сумма')
     time = models.DateField(verbose_name='На какое время')
     passport = models.FileField(verbose_name='Скан пасспорта')

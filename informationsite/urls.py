@@ -8,11 +8,11 @@ from drf_yasg import openapi
 from django.conf.urls import url
 
 schema_view = get_schema_view(openapi.Info(
-      title="Coin API",
-      default_version='v1',
-   ),
-   public=True,
-   permission_classes=(permissions.AllowAny,),)
+    title="Coin API",
+    default_version='v1',
+),
+    public=True,
+    permission_classes=(permissions.AllowAny,), )
 
 urlpatterns = [
     path('jet/', include('jet.urls', 'jet')),  # Django JET URL
@@ -22,3 +22,7 @@ urlpatterns = [
     path('api/auth/', include('authentication.urls')),
     url(r'^$', TemplateView.as_view(template_name='list.html'), name='home'),
 ]
+
+admin.site.site_header = "Администрация COINkg"
+admin.site.site_title = "Администрация COINkg"
+admin.site.index_title = "Добро пожаловать на панель админитрирования COINkg"
