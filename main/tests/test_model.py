@@ -33,15 +33,15 @@ class FeedbackModelTest(TestCase):
 
 class CreditModelTest(TestCase):
     def setUp(self):
-        self.user = User.objects.create(name = 'Alyosha',
+        self.user = User.objects.create(name='Alyosha',
                                         surname='Gumanoid',
-                                        patrnymic='Krutonovich',
-                                        email ='alyosha@mail.ru',
+                                        patronymic='Krutonovich',
+                                        email='alyosha@mail.ru',
                                         phone='996557775888',
                                         address='doma',
                                         birthday='19.1.1901',
                                         job='inoplanetyanin')
-        self.credit = Credit.objects.create(user =self.user,
+        self.credit = Credit.objects.create(user=self.user,
                                             sum=2000,
                                             time='20.12.2020')
 
