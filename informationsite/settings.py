@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'djoser',
     'whitenoise.runserver_nostatic',
     'drf_yasg',
-
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -49,9 +49,12 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'informationsite.urls'
+
+CORS_ORIGIN_ALLOW_ALL = True
 
 TEMPLATES = [
     {
@@ -73,7 +76,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'informationsite.wsgi.application'
-
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
@@ -110,7 +112,6 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
@@ -162,14 +163,13 @@ STATIC_URL = '/static/'
 os.makedirs(STATIC_TMP, exist_ok=True)
 os.makedirs(STATIC_ROOT, exist_ok=True)
 STATICFILES_DIRS = (
-os.path.join(BASE_DIR, 'static'),
+    os.path.join(BASE_DIR, 'static'),
 )
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'main/media')
 
 AUTH_USER_MODEL = "authentication.User"
-
 
 REST_FRAMEWORK = {
     # 'DEFAULT_PERMISSION_CLASSES': (
@@ -182,13 +182,10 @@ REST_FRAMEWORK = {
 
 SIMPLE_JWT = {
     'AUTH_HEADER_TYPES': ('JWT',),
-    'ACCESS_TOKEN_LIFETIME': datetime.timedelta(days=3),
-    'REFRESH_TOKEN_LIFETIME': datetime.timedelta(days=7),
-
 }
 
 PROTOCOL = "https"
-DOMAIN = "coinkgtest.herokuapp.com"
+DOMAIN = "coinkg.herokuapp.com"
 DJOSER = {
     'PASSWORD_RESET_CONFIRM_URL': '#/password/reset/confirm/{uid}/{token}',
     'ACTIVATION_URL': 'api/auth/users/activate/{uid}/{token}',
@@ -208,7 +205,6 @@ EMAIL_HOST_PASSWORD = 'kryakryakrya322'
 CKEDITOR_UPLOAD_PATH = "media/"
 
 PHONENUMBER_DEFAULT_REGION = "KG"
-
 
 # This should already be in your settings.py
 django_heroku.settings(locals())
