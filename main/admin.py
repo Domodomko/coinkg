@@ -69,7 +69,7 @@ class FeedbackAdmin(admin.ModelAdmin):
     filter_horizontal = ()
     list_filter = ()
     fieldsets = [
-        (u'Feedback', {'fields': ('name', 'content', 'publish')})
+        (u'Feedback', {'fields': ('name', 'email', 'phone', 'content', 'publish')})
     ]
 
 
