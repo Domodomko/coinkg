@@ -9,7 +9,7 @@ from main.models import *
 class NewsAdmin(TranslationAdmin, ModelAdmin):
     list_display = ('title', 'publish', 'views')
     search_fields = ('title',)
-    readonly_fields = ('publish', 'views')
+    readonly_fields = ('views', )
     ordering = ('publish',)
 
     filter_horizontal = ()
