@@ -15,7 +15,7 @@ class NewsAdmin(TranslationAdmin, ModelAdmin):
     filter_horizontal = ()
     list_filter = ()
     fieldsets = [
-        (u'News', {'fields': ('title', 'content', 'image')})
+        (u'News', {'fields': ('title', 'content', 'image', 'publish')})
     ]
 
     class Media:
