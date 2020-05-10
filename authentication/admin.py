@@ -9,8 +9,7 @@ class UserAdmin(admin.ModelAdmin):
 
     filter_horizontal = ()
     list_filter = ()
-    fieldsets = (
-        'name', 'surname', 'patronymic', 'email', 'phone', 'address', 'birthday', 'job', 'is_active', 'is_staff')
+    fieldsets = [(u'Feedback', {'fields': ('name', 'surname', 'patronymic', 'email', 'phone', 'address', 'birthday', 'job', 'is_active', 'is_staff',) })]
 
 
 admin.site.register(User, UserAdmin)
