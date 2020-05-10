@@ -13,4 +13,4 @@ class UserAdmin(admin.ModelAdmin):
         'name', 'surname', 'patronymic', 'email', 'phone', 'address', 'birthday', 'job', 'is_active', 'is_staff')
 
 
-admin.register(User, UserAdmin)
+admin.site.register(User, UserAdmin)
