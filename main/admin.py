@@ -9,13 +9,13 @@ from main.models import *
 class NewsAdmin(TranslationAdmin, ModelAdmin):
     list_display = ('title', 'publish', 'views')
     search_fields = ('title',)
-    readonly_fields = ('views', )
+    readonly_fields = ('views', 'publish')
     ordering = ('publish',)
 
     filter_horizontal = ()
     list_filter = ()
     fieldsets = [
-        (u'News', {'fields': ('title', 'content', 'image', 'publish')})
+        (u'News', {'fields': ('title', 'content', 'image', 'views',)})
     ]
 
     class Media:
