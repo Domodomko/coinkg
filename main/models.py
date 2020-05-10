@@ -104,7 +104,7 @@ class Credit(models.Model):
     product = models.CharField(choices=PRODUCT_TYPES, max_length=100, verbose_name='Продукт')
     currency = models.CharField(choices=CURRENCY_TYPES, max_length=30, verbose_name='Валюта')
     other_credits = models.BooleanField(default=False, verbose_name="Есть ли другие кредиты?")
-    verify = models.BooleanField(default=False, verbose_name="Подтверждён")
+    verify = models.BooleanField(default=False, verbose_name="Одобрен")
 
     def __str__(self):
         return '{}'.format(self.user)

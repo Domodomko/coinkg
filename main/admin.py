@@ -75,7 +75,7 @@ class FeedbackAdmin(admin.ModelAdmin):
 
 class CreditAdmin(admin.ModelAdmin):
     list_display = ('product', 'sum', 'time', 'passport', 'user', 'verify')
-    search_fields = ('product', 'sum', )
+    search_fields = ('product', 'sum', 'user__email')
     readonly_fields = ('publish',)
 
     filter_horizontal = ()
